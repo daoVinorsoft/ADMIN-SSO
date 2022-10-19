@@ -1,0 +1,468 @@
+<div class="app-group">
+    <div nz-row>
+        <div nz-col nzSpan="12" class="header-page">
+            <h2>Tạo tác vụ công chứng</h2>
+        </div>
+
+    </div>
+
+    <nz-tabset>
+
+        <nz-tab nzTitle="Case công chứng" >
+            <!-- Case công chứng -->
+            <div class="border-bottom" id="case-cong-chung">
+                <b>Case công chứng</b>
+                <form nz-form>
+                    <div nz-row class="gap-1">
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="email">Mã Phương án</nz-form-label>
+                                <input nz-input name="code" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="email">Mã hợp đồng thế chấp</nz-form-label>
+                                <input nz-input name="maHD" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="email">Mã Chi nhánh</nz-form-label>
+                                <input nz-input name="maChiNhanh" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="email">Mã khách hàng </nz-form-label>
+                                <input nz-input name="maKH" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="email">Mã RM</nz-form-label>
+                                <input nz-input name="maRM" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="email">Số điện thoại RM</nz-form-label>
+                                <input nz-input name="phoneRM" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-label [nzSpan]="24" nzFor="email">Thời điểm giao case</nz-form-label>
+                            <nz-form-control [nzSpan]="24">
+                                <nz-date-picker aria-placeholder="Chọn ngày" style="width: 100%" [(ngModel)]="date" (ngModelChange)="onChange($event)" [ngModelOptions]="{standalone: true}"></nz-date-picker>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="email">Thời gian thực hiện dự kiến</nz-form-label>
+                                <nz-time-picker style="width: 100%"  ngDefaultControl [(ngModel)]="timeMer" name="timeMer" nzFormat="HH:mm"  (ngModelChange)="logTimer($event)" placeholder="ddsdsdsd"></nz-time-picker>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="email">Địa điểm thực hiện dự kiến</nz-form-label>
+                                <nz-select ngModel="addres" [ngModelOptions]="{standalone: true}">
+                                    <nz-option nzValue="1" nzLabel="Chọn"></nz-option>
+                                    <nz-option nzValue="2" nzLabel="Địa điểm 2"></nz-option>
+                                    <nz-option nzValue="3" nzLabel="Địa điểm 3"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="email">Mã nhân viên thực hiện</nz-form-label>
+                                <input nz-input name="maNVTH" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="email">Trạng thái</nz-form-label>
+                                <nz-select ngModel="status" [ngModelOptions]="{standalone: true}">
+                                    <nz-option nzValue="1" nzLabel="Chờ nhận"></nz-option>
+                                    <nz-option nzValue="2" nzLabel="Trạng thái 2"></nz-option>
+                                    <nz-option nzValue="3" nzLabel="Trạng thái 3"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                    </div>
+                </form>
+            </div>
+
+            <!-- Tài sản  -->
+            <div class="border-bottom" id="TS">
+                <form nz-form>
+                    <div>
+                        <p>
+                            <b>Tài sản </b>
+                        </p>
+                        <span>
+                            <b class="color_blue">Tài sản 1</b>
+                        </span>
+                        <div nz-row class="gap-1">
+                            <nz-form-item nz-col [nzSpan]="5">
+                                <nz-form-control>
+                                    <nz-form-label nzFor="email">Tên tài sản</nz-form-label>
+                                    <input nz-input name="temTS" type="email" id="email">
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item nz-col [nzSpan]="5">
+                                <nz-form-control>
+                                    <nz-form-label nzFor="email">Loại tài sản</nz-form-label>
+                                    <input nz-input name="loaiTS" type="email" id="email">
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item nz-col [nzSpan]="5">
+                                <nz-form-control>
+                                    <nz-form-label nzFor="email">Giá trị tài sản</nz-form-label>
+                                    <input nz-input name="valueTS" type="email" id="email">
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item nz-col [nzSpan]="5">
+                                <nz-form-control>
+                                    <nz-form-label nzFor="email">Mã tài sản</nz-form-label>
+                                    <input nz-input name="maTS" type="email" id="email">
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item nz-col [nzSpan]="5">
+                                <nz-form-control>
+                                    <nz-form-label nzFor="email">Id Case</nz-form-label>
+                                    <input nz-input name="idCase" type="email" id="email">
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSpan]="24" nzFor="email">Có cần đăng ký GDBĐ không?</nz-form-label>
+                                <nz-form-control [nzSpan]="24" class="gap-1">
+                                    <nz-switch ngDefaultControl [ngModel]="false" name="GDBD"  [ngModelOptions]="{standalone: true}"></nz-switch>
+                                    <label nzFor="email">Không</label>
+                                </nz-form-control>
+                            </nz-form-item>
+
+
+                            <nz-form-item>
+                                <nz-form-label [nzSpan]="24" nzFor="email">Có cập nhật thông tin không?</nz-form-label>
+                                <nz-form-control [nzSpan]="24" class="gap-1">
+                                    <nz-switch ngDefaultControl [ngModel]="true" name="isUpdatInfo" [ngModelOptions]="{standalone: true}"></nz-switch>
+                                    <label nzFor="email">Có</label>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSpan]="24" nzFor="email">Có xóa chấp không?</nz-form-label>
+                                <nz-form-control [nzSpan]="24" class="gap-1">
+                                    <nz-switch ngDefaultControl [ngModel]="false" name="isDelete" [ngModelOptions]="{standalone: true}"></nz-switch>
+                                    <label nzFor="email">Có</label>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                        </div>
+                    </div>
+
+                    <div>
+                        <span>
+                            <b class="color_blue">Tài sản 2</b>
+                        </span>
+                        <div nz-row class="gap-1">
+                            <nz-form-item nz-col [nzSpan]="5">
+                                <nz-form-control>
+                                    <nz-form-label nzFor="email">Tên tài sản</nz-form-label>
+                                    <input nz-input name="nameTS2" type="email" id="email">
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item nz-col [nzSpan]="5">
+                                <nz-form-control>
+                                    <nz-form-label nzFor="email">Loại tài sản</nz-form-label>
+                                    <input nz-input name="loaiTS2" type="email" id="email">
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item nz-col [nzSpan]="5">
+                                <nz-form-control>
+                                    <nz-form-label nzFor="email">Giá trị tài sản</nz-form-label>
+                                    <input nz-input name="valueTS2" type="email" id="email">
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item nz-col [nzSpan]="5">
+                                <nz-form-control>
+                                    <nz-form-label nzFor="email">Mã tài sản</nz-form-label>
+                                    <input nz-input name="maTS2" type="email" id="email">
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item nz-col [nzSpan]="5">
+                                <nz-form-control>
+                                    <nz-form-label nzFor="email">Id Case</nz-form-label>
+                                    <input nz-input name="idCase2" type="email" id="email">
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSpan]="24" nzFor="email">Có cần đăng ký GDBĐ không?</nz-form-label>
+                                <nz-form-control [nzSpan]="24" class="gap-1">
+                                    <nz-switch ngDefaultControl [ngModel]="false" name="GDBD2" [ngModelOptions]="{standalone: true}"></nz-switch>
+                                    <label nzFor="email">Không</label>
+                                </nz-form-control>
+                            </nz-form-item>
+
+
+                            <nz-form-item>
+                                <nz-form-label [nzSpan]="24" nzFor="email">Có cập nhật thông tin không?</nz-form-label>
+                                <nz-form-control [nzSpan]="24" class="gap-1">
+                                    <nz-switch ngDefaultControl [ngModel]="true" name="update2" [ngModelOptions]="{standalone: true}"></nz-switch>
+                                    <label nzFor="email">Có</label>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSpan]="24" nzFor="email">Có xóa chấp không?</nz-form-label>
+                                <nz-form-control [nzSpan]="24" class="gap-1">
+                                    <nz-switch ngDefaultControl [ngModel]="false" name="isDel2" [ngModelOptions]="{standalone: true}"></nz-switch>
+                                    <label nzFor="email">Có</label>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                        </div>
+                    </div>
+                    <button nz-button nzType="primary" nzGhost>Thêm tài sản +</button>
+                </form>
+            </div>
+
+            <!-- Nhân viên  -->
+            <div class="border-bottom" id="NV">
+                <b>Nhân viên </b>
+                <form nz-form>
+                    <div nz-row class="gap-1">
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="email">Mã Nhân viên</nz-form-label>
+                                <nz-select ngModel="codeStaff" name="codeStaff" [ngModelOptions]="{standalone: true}">
+                                    <nz-option nzValue="1" nzLabel="Nhân viên 1"></nz-option>
+                                    <nz-option nzValue="2" nzLabel="Nhân viên 2"></nz-option>
+                                    <nz-option nzValue="3" nzLabel="Nhân viên 3"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="email">Tên Nhân viên</nz-form-label>
+                                <input nz-input  name="nameNV" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="tenDN">Tên đăng nhập(Email)</nz-form-label>
+                                <input nz-input  name="tenDN" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="maKH2">Mã khách hàng</nz-form-label>
+                                <input nz-input name="maKH2"  type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="CD">Chức danh</nz-form-label>
+                                <input nz-input name="CD" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="maCD1">Mã chức danh</nz-form-label>
+                                <input nz-input name="maCD1" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="maCN1">Mã Chi nhánh/Hub</nz-form-label>
+                                <input nz-input name="maCN1" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Chi nhánh  -->
+            <div class="border-bottom" id="CN">
+                <b>Chi nhánh </b>
+                <form nz-form>
+                    <div nz-row class="gap-1">
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="maCN2">Mã chi nhánh</nz-form-label>
+                                <input nz-input name="maCN2" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="tenCN2">Tên chi nhánh</nz-form-label>
+                                <input nz-input name="tenCN2" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="viTri">Vị trí địa lý</nz-form-label>
+                                <input nz-input name="viTri" type="text" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="loaiCN">Loại chi nhánh</nz-form-label>
+                                <input nz-input name="loaiCN" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Văn phòng công chứng -->
+            <div class="border-bottom" id="VPCC">
+                <b>Văn phòng công chứng</b>
+                <form nz-form>
+                    <div nz-row class="gap-1">
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="tenVP">Tên văn phòng</nz-form-label>
+                                <nz-select ngModel="nameOffice" name="tenVP" [ngModelOptions]="{standalone: true}">
+                                    <nz-option nzValue="1" nzLabel="Văn phòng 1"></nz-option>
+                                    <nz-option nzValue="2" nzLabel="Văn phòng 2"></nz-option>
+                                    <nz-option nzValue="3" nzLabel="Văn phòng 3"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="10">
+                            <nz-form-control>
+                                <nz-form-label nzFor="viTri2">Vị trí địa lý</nz-form-label>
+                                <input nz-input name="viTri2" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="isLienKet">Có liên kết với MB không</nz-form-label>
+                                <input nz-input name="isLienKet" type="text" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                    </div>
+                </form>
+            </div>
+
+
+            <!-- Khách hàng  -->
+            <div class="border-bottom" id="KH">
+                <b>Khách hàng </b>
+                <form nz-form>
+                    <div nz-row class="gap-1">
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="maKH3">Mã khách hàng</nz-form-label>
+                                <input nz-input name="maKH3" type="text" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="tenKH3">Tên khách hàng</nz-form-label>
+                                <input nz-input name="tenKH3" type="text" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="phoneKH3">Số điện thoại khách hàng</nz-form-label>
+                                <input nz-input name="phoneKH3" type="text" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="emailKH3">Email Khách hàng</nz-form-label>
+                                <input nz-input name="emailKH3" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="typeCustommer">Loại KH</nz-form-label>
+                                <nz-select ngModel="typeCustommer" name="typeCustommer" [ngModelOptions]="{standalone: true}">
+                                    <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+                                    <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+                                    <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item nz-col [nzSpan]="5">
+                            <nz-form-control>
+                                <nz-form-label nzFor="idCase3">Id Case</nz-form-label>
+                                <input nz-input name="idCase3" type="text" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+
+                    </div>
+                </form>
+            </div>
+
+            <div style="padding: 20px 0px ;">
+                <button nz-button nzType="primary">Khởi tạo tác vụ công chứng</button>
+            </div>
+
+        </nz-tab>
+        
+        <nz-tab nzTitle="Tài sản">
+            <b>Tài sản</b>
+        </nz-tab>
+        <nz-tab nzTitle="Nhân viên">
+            <b>Nhân viên</b>
+        </nz-tab>
+        <nz-tab nzTitle="Chi nhánh">
+            <b>Chi nhánh</b>
+        </nz-tab>
+        <nz-tab nzTitle="Văn phòng công chứng">
+            <b>Văn phòng công chứng</b>
+        </nz-tab>
+        <nz-tab nzTitle="Đăng ký GDBĐ">
+            <b>Đăng ký GDBĐ</b>
+        </nz-tab>
+        <nz-tab nzTitle="Khách hàng">
+            <b>Khách hàng</b>
+        </nz-tab>
+    </nz-tabset>
+    <br />
+
+</div>

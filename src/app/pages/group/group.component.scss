@@ -1,0 +1,43 @@
+.app-group {
+    .header-page {}
+    .header-page h2 {
+        font-weight: bold;
+    }
+    .right-content {
+        text-align: right;
+    }
+    .right-content .button-default {
+        background-color: transparent;
+        border: none;
+    }
+    .tabCol {
+        display: none;
+    }
+     ::ng-deep nz-tag {
+        width: 90px;
+    }
+}
+
+// ::ng-deep .ant-modal[role="document"] {
+//     top: auto !important;
+//     width: 620px !important;
+// }
+// ::ng-deep nz-modal-container {
+//     height: 100vh !important;
+//     overflow: hidden !important;
+//     display: flex;
+//     align-items: center !important;
+// }
+// ::ng-deep nz-form-control {
+//     margin-left: 25px;
+// }
+// ::ng-deep nz-tag {
+//     width: 90px;
+// }
+// ::ng-deep .ant-modal-body {
+//     max-height: 650px !important;
+//     overflow-y: scroll;
+// }
+// ::ng-deep nz-date-picker {
+//     width: 100%;
+// }

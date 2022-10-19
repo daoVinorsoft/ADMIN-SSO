@@ -1,0 +1,52 @@
+<div class="resetPass">
+    <div class="header">Phần mềm quản lý app cho CVHT tại khâu hoàn thiện thủ tục TSBĐ
+
+    </div>
+    <div class="main">
+
+        <form nz-form [formGroup]="validateForm" class="login-form">
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Chưa điền mật khẩu mới của bạn">
+                    <nz-input-group nzPrefixIcon="lock" class="input">
+                        <input type="text" nz-input formControlName="password" placeholder="Mật khẩu mới" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item class="inputConfirm">
+                <nz-form-control nzErrorTip="Chưa điền mật khẩu mới của bạn">
+                    <nz-input-group nzPrefixIcon="lock" class="input ">
+                        <input (change)="setConfirmPassword($event)" type="text" nz-input formControlName="confirmPassword" placeholder="Xác nhận lại mật khẩu" />
+                    </nz-input-group>
+
+                </nz-form-control>
+
+            </nz-form-item>
+            <ng-container *ngIf="confirmed;else errorDiv">
+
+            </ng-container>
+            <ng-template #errorDiv>
+                <div class="errorConfirm"> Mật khẩu chưa trùng khớp </div>
+            </ng-template>
+
+
+
+            <button class="submitButton" nz-button nzType="default" (click)="submitForm()">Tạo mật khẩu mới</button>
+            <div nz-row class="linkGroup">
+                <div class="forgotPass">
+                    <a href="/auth/login">Đăng nhập</a>
+                </div>
+                <div class="Register">
+                    <a href="/auth/register">Đăng kí</a>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+    <div class="logo">
+        <div class="logoContainer">
+            <img src='../../../assets/icons/Logo_MB_new.png'>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,140 @@
+.color_blue {
+    color: #2654a6;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.border {
+    border: 1px solid #f0f0f0;
+}
+
+.border-top {
+    border-top: 1px solid #f0f0f0;
+}
+
+.border-left {
+    border-left: 1px solid #f0f0f0;
+}
+
+.border-right {
+    border-right: 1px solid #f0f0f0;
+}
+
+.ant-form-vertical .ant-form-item-label,
+.ant-col-24.ant-form-item-label,
+.ant-col-xl-24.ant-form-item-label {
+    padding: 0 0 0px;
+}
+
+.qty-screen button {
+    background: #F4F4F4;
+}
+
+.qty-screen .ant-btn:active .ant-btn:focus {
+    background: #40a9ff !important;
+    color: #f0f0f0 !important;
+}
+
+.qty-screen .ant-btn:hover {
+    background: #40a9ff;
+    color: #f0f0f0;
+}
+
+.qty-screen .ant-btn:focus {
+    background: #40a9ff !important;
+    color: #f0f0f0 !important;
+}
+
+.tab-camera {
+    font-weight: 700;
+}
+
+.menu-tab-camera {
+    font-weight: normal;
+    border-right: none;
+}
+
+.collapse-camera {
+    background: transparent;
+
+}
+
+.ant-collapse-borderless>.ant-collapse-item {
+    border: none !important;
+}
+
+.circle-online {
+    background: #2df06733;
+    border-radius: 50%;
+    color: #fff;
+    height: 1.2em;
+    position: relative;
+    width: 1.2em;
+}
+
+.circle-icon-online {
+    height: 50%;
+    left: 50%;
+    position: absolute;
+    stroke: currentColor;
+    stroke-width: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    background: #00B335;
+    border-radius: 50%;
+}
+
+.circle-off {
+    background: #f3491f21;
+    border-radius: 50%;
+    color: #fff;
+    height: 1.2em;
+    position: relative;
+    width: 1.2em;
+}
+
+.circle-icon-off {
+    height: 50%;
+    left: 50%;
+    position: absolute;
+    stroke: currentColor;
+    stroke-width: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    background: #FF3300;
+    border-radius: 50%;
+}
+
+.name-cam {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.item-child-cam {
+    padding: 0px;
+    margin: 0px;
+}
+
+.ant-collapse>.ant-collapse-item.ant-collapse-no-arrow>.ant-collapse-header {
+    padding-left: 0px !important;
+}
+
+.select-custom {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    border-radius: 5px;
+    margin: 10px 5px;
+}
+
+.lable-select {
+    color: rgba(0, 0, 0, 0.4);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+}

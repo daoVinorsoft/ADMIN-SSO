@@ -1,0 +1,733 @@
+<!-- <div>
+    <div class="search" *ngIf="isShowSearch">
+        <h2>Bộ lọc</h2>
+        <div nz-row nzJustify="space-around">
+            <div nz-col nzSpan="10">
+                <nz-input-group [nzSuffix]="suffixIconSearch">
+                    <input type="text" nz-input placeholder="Tìm kiếm theo tên khách hàng" [(ngModel)]="unitText" (ngModelChange)="onChangeUnit($event)" />
+                </nz-input-group>
+            </div>
+            <div nz-col nzSpan="10">
+                <nz-input-group [nzSuffix]="suffixIconSearch">
+                    <input type="text" nz-input placeholder="Tìm kiếm theo mã địa đanh" [(ngModel)]="positionText" (ngModelChange)="onChangePosition($event)" />
+                </nz-input-group>
+            </div>
+        </div>
+        <ng-template #suffixIconSearch>
+            <i nz-icon nzType="search" nzTheme="outline"></i>
+        </ng-template>
+    </div>
+</div> -->
+
+<div class="app-user">
+    <div nz-row>
+        <div nz-col nzSpan="12" class="header-page">
+            <h2>Quản lý người dùng</h2>
+        </div>
+        <div nz-col nzSpan="12" class="right-content">
+            <button nz-button nzType="primary" (click)="showModalAdd()"><i nz-icon nzType="plus" nzTheme="outline"></i>
+                Thêm mới </button>
+            <button nz-button nzType="default" class="button-default" (click)="showDisplay()"><i nz-icon
+                    nzType="sliders" nzTheme="outline"></i>Hiển thị</button>
+
+        </div>
+    </div>
+    <nz-tabset>
+
+        <nz-tab nzTitle="Thông tin cá nhân">
+            <form *ngIf="formDataUser" nz-form [formGroup]="formDataUser" (ngSubmit)="handleEditUser()">
+            <!-- Thông tin cá nhân -->
+            <div nz-row>
+                <div nz-col nzSpan="16">
+                    <div class="" id="case-cong-chung">
+                        <div nz-row class="gap-1">
+                            <nz-form-item nz-col [nzSpan]="11">
+                                <nz-form-control>
+                                    <nz-form-label nzFor="email">Tên người dùng</nz-form-label>
+                                    <input formControlName="USERNAME" nz-input name="code" type="email" id="email">
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item nz-col [nzSpan]="11">
+                                <nz-form-control>
+                                    <nz-form-label nzFor="email">Nhóm người dùng</nz-form-label>
+                                    <nz-select ngModel="addres" [ngModelOptions]="{standalone: true}">
+                                        <nz-option nzValue="1" nzLabel="Admin"></nz-option>
+                                        <nz-option nzValue="2" nzLabel="Customer"></nz-option>
+                                        <nz-option nzValue="3" nzLabel="Agent"></nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item nz-col [nzSpan]="11">
+                                <nz-form-control>
+                                    <nz-form-label nzFor="email">Email</nz-form-label>
+                                    <input formControlName="EMAIL" nz-input name="maChiNhanh" type="email" id="email">
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item nz-col [nzSpan]="11">
+                                <nz-form-control>
+                                    <nz-form-label nzFor="email">Số điện thoại </nz-form-label>
+                                    <input formControlName="PHONE" nz-input name="maKH" type="email" id="email">
+                                </nz-form-control>
+                            </nz-form-item>
+
+
+                            <nz-form-item nz-col [nzSpan]="11">
+                                <nz-form-label [nzSpan]="24" nzFor="email">Thời gian tạo tài khoản</nz-form-label>
+                                <nz-form-control [nzSpan]="24">
+                                    <nz-date-picker formControlName='DATE_JOINED' aria-placeholder="Chọn ngày"
+                                        style="width: 100%" [(ngModel)]="date" (ngModelChange)="onChange($event)">
+                                    </nz-date-picker>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item nz-col [nzSpan]="11">
+                                <nz-form-label [nzSpan]="24" nzFor="email">Sửa đổi lần cuối</nz-form-label>
+                                <nz-form-control [nzSpan]="24">
+                                    <nz-date-picker formControlName='EDIT_TIME' placeholder="Chọn ngày"
+                                        style="width: 100%" [(ngModel)]="date" (ngModelChange)="onChange($event)">
+                                    </nz-date-picker>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div nz-col nzSpan="8">
+                    <div>
+                        <p>Ảnh đại diện</p>
+                        <img src="../assets/icons/noAvatar.png" alt="logo">
+                    </div>
+                    <br>
+                    <nz-upload nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                        [nzHeaders]="{ authorization: 'authorization-text' }" (nzChange)="handleChange($event)">
+                        <button nz-button>
+                            Upload ảnh
+                            <span nz-icon nzType="upload"></span>
+                        </button>
+                    </nz-upload>
+                </div>
+
+            </div>
+
+            <div style="padding: 20px 0px ;">
+                <button nz-button class="form-button" >Lưu thông tin</button>
+            </div>
+            </form>
+        </nz-tab>
+
+        <nz-tab nzTitle="Thay mật khẩu">
+            <div nz-row class="p-3">
+                <div nz-col nzSpan="16">
+                    <form *ngIf="formDataChangePass" nz-form [formGroup]="formDataChangePass" class=""
+                        (ngSubmit)="submitFormForgot('CHANGEPASS')">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="8" nzRequired>Mật khẩu hiện tại</nz-form-label>
+                            <nz-form-control [nzSpan]="19" nzErrorTip="Chưa điền mật khẩu">
+                                <nz-input-group nzPrefixIcon="lock" class="input input-login"
+                                    [nzSuffix]="suffixTemplate">
+                                    <input [type]="passwordVisible ? 'text' : 'password'" nz-input
+                                        formControlName="old_password" placeholder="Mật khẩu" />
+                                </nz-input-group>
+                                <ng-template #suffixTemplate>
+                                    <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                                        (click)="passwordVisible = !passwordVisible"></i>
+                                </ng-template>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="8" nzRequired>Mật khẩu mới</nz-form-label>
+                            <nz-form-control [nzSpan]="19" nzErrorTip="Chưa điền mật khẩu">
+                                <nz-input-group nzPrefixIcon="lock" class="input input-login"
+                                    [nzSuffix]="suffixTemplate">
+                                    <input [type]="passwordVisible ? 'text' : 'password'" nz-input
+                                        formControlName="new_password" placeholder="Mật khẩu" />
+                                </nz-input-group>
+                                <ng-template #suffixTemplate>
+                                    <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                                        (click)="passwordVisible = !passwordVisible"></i>
+                                </ng-template>
+                                <label> Dài trên 11 kí tự, bao gồm cả chữ, số, viết hoa, viết thường và cả những kí tự
+                                    đặc biệt </label>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="8" nzRequired>Nhập lại mật khẩu</nz-form-label>
+                            <nz-form-control [nzSpan]="19" nzErrorTip="Chưa điền mật khẩu">
+                                <nz-input-group nzPrefixIcon="lock" class="input input-login"
+                                    [nzSuffix]="suffixTemplate">
+                                    <input [type]="passwordVisible ? 'text' : 'password'" nz-input
+                                        formControlName="rePassword" placeholder="Mật khẩu" />
+                                </nz-input-group>
+                                <ng-template #suffixTemplate>
+                                    <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                                        (click)="passwordVisible = !passwordVisible"></i>
+                                </ng-template>
+                                <label class="text-danger"
+                                    *ngIf="formDataChangePass.controls['new_password'].value != formDataChangePass.controls['rePassword'].value ">
+                                    Mật khẩu không khớp </label>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <div nz-row>
+                            <div nz-col nzSpan="8"> </div>
+                            <div nz-col nzSpan="16">
+                                <button nz-button class="login-form-button login-form-margin">Xác nhận</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nz-tab>
+
+    </nz-tabset>
+
+
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+        <div class="ant-table-filter-dropdown">
+            <div class="search-box">
+                <input type="text" nz-input placeholder="Từ khóa" [(ngModel)]="searchValue" />
+                <button nz-button nzSize="small" nzType="primary" (click)="searchUser()"
+                    class="search-button">Tìm</button>
+                <button nz-button nzSize="small" (click)="reset()">Hủy</button>
+            </div>
+        </div>
+    </nz-dropdown-menu>
+
+    <!-- Edit modal -->
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="Cập nhật thông tin người dùng" (nzOnCancel)="handleCancel()"
+        [nzOkLoading]="isOkLoading">
+        <ng-container *nzModalContent>
+            <nz-tabset nzCentered>
+                <!-- Tab1 -->
+                <nz-tab nzTitle="Thông tin chi tiết" (nzClick)="showTab(1)">
+                    <!-- Form Edit -->
+                    <div class="tabInfo">
+                        <form nz-form [formGroup]="formEdit">
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="fullname" nzRequired>Tên người dùng
+                                </nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Chưa nhập tên người dùng">
+                                    <input nz-input id="fullname" formControlName="fullname"
+                                        placeholder="Nhập tên người dùng" style="width:100%" />
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="birthday">Ngày sinh
+                                </nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Chưa nhập ngày sinh">
+                                    <nz-date-picker [nzFormat]="dateFormat" id="birthday" formControlName="birthday"
+                                        nzPlaceHolder="Nhập ngày sinh"></nz-date-picker>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="phone_number">SĐT
+                                </nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzHasFeedback [nzErrorTip]="phoneError">
+                                    <input nz-input formControlName="phone_number" id="phone_number" style="width:100%"
+                                        placeholder="Nhập SĐT" />
+                                    <ng-template #phoneError let-control>
+                                        <ng-container *ngIf="control.hasError('required')">Chưa nhập số điện thoại
+                                        </ng-container>
+                                        <ng-container *ngIf="control.hasError('validated')">
+                                            Số điện thoại phải đúng đầu số ( 03, 05, 07, 08, 09 ) và đủ 10 số
+                                        </ng-container>
+                                    </ng-template>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address" nzRequired>Địa chỉ</nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Chưa nhập địa chỉ">
+                                    <input nz-input id="address" formControlName="address" placeholder="Nhập địa chỉ "
+                                        style="width:100%" />
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="email" nzRequired>Email</nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzHasFeedback [nzErrorTip]="emailError">
+                                    <input nz-input id="email" formControlName="email" placeholder="Nhập email"
+                                        style="width:100%" />
+                                    <ng-template #emailError let-control>
+                                        <ng-container *ngIf="control.hasError('required')">Chưa nhập email
+                                        </ng-container>
+                                        <ng-container *ngIf="control.hasError('validated')">
+                                            Email không đúng định dạng
+                                        </ng-container>
+
+                                    </ng-template>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="username" nzRequired>Tên đăng nhập
+                                </nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Chưa nhập tên đăng nhập">
+                                    <input nz-input id="username" formControlName="username"
+                                        placeholder="Nhập tên đăng nhập" style="width:100%" />
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="createdAt">Ngày tạo
+                                </nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Chưa nhập ngày tạo">
+                                    <nz-date-picker [nzFormat]="dateFormat" id="createdAt" formControlName="createdAt"
+                                        nzPlaceHolder="Nhập ngày tạo"></nz-date-picker>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="enabled" nzRequired>Trạng thái
+                                </nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Chưa nhập tên trạng thái">
+                                    <nz-switch [(ngModel)]="enabledStatus" [nzControl]="true"
+                                        (click)="handleSwitchEnabled()" formControlName="enabled"></nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                        </form>
+                    </div>
+
+                </nz-tab>
+
+                <!-- Tab  2 -->
+                <nz-tab nzTitle="Thuộc nhóm người dùng" (nzClick)="showTab(2)">
+                    <div class="tabGroup">
+                        <form nz-form [formGroup]="formAddGroup" class="formAddGroup">
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="group_id" nzRequired>Chọn nhóm người dùng
+                                </nz-form-label>
+                                <nz-form-control [nzSm]="16" [nzXs]="24" nzErrorTip="Chưa chọn nhóm">
+                                    <nz-select nzMode="multiple" [(ngModel)]="listGroupUser"
+                                        (ngModelChange)="onChangeSelectGroup($event)" formControlName="group_id"
+                                        nzShowSearch nzAllowClear nzPlaceHolder="Chọn nhóm">
+                                        <ng-container *ngFor="let item of listGroup; index as i">
+                                            <nz-option nzLabel="{{item.id}} - {{item.name}}" nzValue="{{item.id}}">
+                                            </nz-option>
+                                        </ng-container>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </form>
+
+                        <nz-table #filterTable [nzData]="listUserGroupData" nzBordered nzShowPagination='false'
+                            nzTableLayout="fixed">
+                            <thead>
+                                <tr>
+                                    <ng-container *ngFor="let column of listColumnGroup; index as i" [ngSwitch]="i">
+                                        <ng-container *ngSwitchCase="0">
+                                            <th nzAlign="center" class="cl{{i}}" colspan="1">
+                                                {{column.name}}
+                                            </th>
+                                        </ng-container>
+                                        <ng-container *ngSwitchCase="3">
+                                            <th nzAlign="center" class="cl{{i}}" colspan="1">
+                                                {{column.name}}
+                                            </th>
+                                        </ng-container>
+                                        <ng-container *ngSwitchDefault>
+                                            <th nzAlign="center" class="cl{{i}}" colspan="2">
+                                                {{column.name}}
+                                            </th>
+                                        </ng-container>
+
+
+                                    </ng-container>
+
+                                    <th nzAlign="center" colspan="1">Tùy chọn</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of filterTable.data; let i = index" style="text-align: center;">
+                                    <td class="cl0" colspan="1">{{i + 1}}</td>
+                                    <td class="cl1" colspan="2">{{ data.name }}</td>
+
+                                    <td class="cl2" colspan="2" *ngIf="data.active===true">
+                                        <nz-tag nzColor="success">HOẠT ĐỘNG</nz-tag>
+                                    </td>
+                                    <td class="cl2" colspan="2" *ngIf="data.active===false">
+                                        <nz-tag nzColor="error">KHÓA</nz-tag>
+                                    </td>
+                                    <td colspan="1">
+
+                                        <button (click)="deleteSelectedGroup(data.id)" nz-button nz-danger
+                                            nzType="primary" style="margin-right: 10px;" nzDanger><i nz-icon
+                                                nzType="delete" nzTheme="outline"></i></button>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </nz-table>
+                    </div>
+
+
+                </nz-tab>
+
+                <!-- Tab 3 -->
+                <nz-tab nzTitle="Phân quyền" (nzClick)="showTab(3)">
+                    <div class="tabRole">
+                        <div class="addRoleForm">
+                            <nz-form-label [nzSm]="8" [nzXs]="24">Chọn quyền hệ thống
+                            </nz-form-label>
+                            <!-- <div class="tableRole">
+                                <ng-container *ngFor="let item of listUserRoleData;index as i">
+                                    <div class="itemRole">
+                                        <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="role_id">
+                                            {{item.name}}
+                                        </nz-form-label>
+                                        <nz-switch [(ngModel)]="item.selected" (click)="onChangeSwitchRole(item.id)">
+                                        </nz-switch>
+                                    </div>
+                                </ng-container>
+                            </div> -->
+
+
+
+                        </div>
+
+
+                        <nz-table #filterTableRole [nzData]="listUserRoleData" [nzScroll]="{ y: '340px' }" nzBordered
+                            nzShowPagination='false' nzTableLayout="fixed">
+                            <thead>
+                                <tr>
+                                    <ng-container *ngFor="let column of listColumnRole; index as i" [ngSwitch]="i">
+                                        <ng-container *ngSwitchCase="0">
+                                            <th nzAlign="center" class="cl{{i}}" colspan="1">
+                                                {{column.name}}
+                                            </th>
+                                        </ng-container>
+                                        <ng-container *ngSwitchCase="3">
+                                            <th nzAlign="center" class="cl{{i}}" colspan="1">
+                                                {{column.name}}
+                                            </th>
+                                        </ng-container>
+                                        <ng-container *ngSwitchDefault>
+                                            <th nzAlign="center" class="cl{{i}}" colspan="2">
+                                                {{column.name}}
+                                            </th>
+                                        </ng-container>
+
+
+                                    </ng-container>
+
+                                    <th nzAlign="center" colspan="1">Tùy chọn</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let data of filterTableRole.data; let i = index">
+                                    <tr style="text-align: center;">
+                                        <td class="cl0" colspan="1">{{i + 1}}</td>
+                                        <td class="cl1" colspan="2">{{ data.name }}</td>
+
+                                        <td class="cl2" colspan="2" *ngIf="data.active===true">
+                                            <nz-tag nzColor="success">HOẠT ĐỘNG</nz-tag>
+                                        </td>
+                                        <td class="cl2" colspan="2" *ngIf="data.active===false">
+                                            <nz-tag nzColor="error">KHÓA</nz-tag>
+                                        </td>
+                                        <td colspan="1">
+
+                                            <nz-switch [(ngModel)]="data.selected"
+                                                (click)="onChangeSwitchRole(data.id)">
+                                            </nz-switch>
+
+                                        </td>
+                                    </tr>
+                                </ng-container>
+
+                            </tbody>
+                        </nz-table>
+                    </div>
+                </nz-tab>
+
+            </nz-tabset>
+        </ng-container>
+    </nz-modal>
+
+
+    <!-- Add modal -->
+    <nz-modal [(nzVisible)]="isVisibleAdded" nzTitle="Thêm mới thông tin người dùng" (nzOnCancel)="handleCancel()"
+        [nzOkLoading]="isOkLoadingAdded">
+        <ng-container *nzModalContent>
+            <nz-tabset nzCentered>
+                <!-- Tab1 -->
+                <nz-tab nzTitle="Thông tin chi tiết" (nzClick)="showTab(1)">
+                    <!-- Form Edit -->
+                    <div class="tabInfo">
+                        <form nz-form [formGroup]="formEdit">
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="fullname" nzRequired>Tên người dùng
+                                </nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Chưa nhập tên người dùng">
+                                    <input nz-input id="fullname" formControlName="fullname"
+                                        placeholder="Nhập tên người dùng" style="width:100%" />
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="birthday">Ngày sinh
+                                </nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Chưa nhập ngày sinh">
+                                    <nz-date-picker [nzFormat]="dateFormat" id="birthday" formControlName="birthday"
+                                        nzPlaceHolder="Nhập ngày sinh"></nz-date-picker>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="phone_number">SĐT
+                                </nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzHasFeedback [nzErrorTip]="phoneError">
+                                    <input nz-input formControlName="phone_number" id="phone_number" style="width:100%"
+                                        placeholder="Nhập SĐT" />
+                                    <ng-template #phoneError let-control>
+                                        <ng-container *ngIf="control.hasError('required')">Chưa nhập số điện thoại
+                                        </ng-container>
+                                        <ng-container *ngIf="control.hasError('validated')">
+                                            Số điện thoại phải đúng đầu số ( 03, 05, 07, 08, 09 ) và đủ 10 số
+                                        </ng-container>
+                                    </ng-template>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address" nzRequired>Địa chỉ</nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Chưa nhập địa chỉ">
+                                    <input nz-input id="address" formControlName="address" placeholder="Nhập địa chỉ "
+                                        style="width:100%" />
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="email" nzRequired>Email</nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzHasFeedback [nzErrorTip]="emailError">
+                                    <input nz-input id="email" formControlName="email" placeholder="Nhập email"
+                                        style="width:100%" />
+                                    <ng-template #emailError let-control>
+                                        <ng-container *ngIf="control.hasError('required')">Chưa nhập email
+                                        </ng-container>
+                                        <ng-container *ngIf="control.hasError('validated')">
+                                            Email không đúng định dạng
+                                        </ng-container>
+
+                                    </ng-template>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="username" nzRequired>Tên đăng nhập
+                                </nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Chưa nhập tên đăng nhập">
+                                    <input nz-input id="username" formControlName="username"
+                                        placeholder="Nhập tên đăng nhập" style="width:100%" />
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="createdAt">Ngày tạo
+                                </nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Chưa nhập ngày tạo">
+                                    <nz-date-picker [nzFormat]="dateFormat" id="createdAt" formControlName="createdAt"
+                                        nzPlaceHolder="Nhập ngày tạo"></nz-date-picker>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="enabled" nzRequired>Trạng thái
+                                </nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Chưa nhập tên trạng thái">
+                                    <nz-switch [(ngModel)]="enabledStatus" [nzControl]="true"
+                                        (click)="handleSwitchEnabled()" formControlName="enabled"></nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                        </form>
+                    </div>
+
+                </nz-tab>
+
+                <!-- Tab  2 -->
+                <nz-tab nzTitle="Thuộc nhóm người dùng" (nzClick)="showTab(2)">
+                    <div class="tabGroup">
+                        <form nz-form [formGroup]="formAddGroup" class="formAddGroup">
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="group_id" nzRequired>Chọn nhóm người dùng
+                                </nz-form-label>
+                                <nz-form-control [nzSm]="16" [nzXs]="24" nzErrorTip="Chưa chọn nhóm">
+                                    <nz-select nzMode="multiple" [(ngModel)]="listGroupUser"
+                                        (ngModelChange)="onChangeSelectGroup($event)" formControlName="group_id"
+                                        nzShowSearch nzAllowClear nzPlaceHolder="Chọn nhóm">
+                                        <ng-container *ngFor="let item of listGroup; index as i">
+                                            <nz-option nzLabel="{{item.id}} - {{item.name}}" nzValue="{{item.id}}">
+                                            </nz-option>
+                                        </ng-container>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </form>
+
+                        <nz-table #filterTable [nzData]="listUserGroupData" nzBordered nzShowPagination='false'
+                            nzTableLayout="fixed">
+                            <thead>
+                                <tr>
+                                    <ng-container *ngFor="let column of listColumnGroup; index as i" [ngSwitch]="i">
+                                        <ng-container *ngSwitchCase="0">
+                                            <th nzAlign="center" class="cl{{i}}" colspan="1">
+                                                {{column.name}}
+                                            </th>
+                                        </ng-container>
+                                        <ng-container *ngSwitchCase="3">
+                                            <th nzAlign="center" class="cl{{i}}" colspan="1">
+                                                {{column.name}}
+                                            </th>
+                                        </ng-container>
+                                        <ng-container *ngSwitchDefault>
+                                            <th nzAlign="center" class="cl{{i}}" colspan="2">
+                                                {{column.name}}
+                                            </th>
+                                        </ng-container>
+
+
+                                    </ng-container>
+
+                                    <th nzAlign="center" colspan="1">Tùy chọn</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of filterTable.data; let i = index" style="text-align: center;">
+                                    <td class="cl0" colspan="1">{{i + 1}}</td>
+                                    <td class="cl1" colspan="2">{{ data.name }}</td>
+
+                                    <td class="cl2" colspan="2" *ngIf="data.active===true">
+                                        <nz-tag nzColor="success">HOẠT ĐỘNG</nz-tag>
+                                    </td>
+                                    <td class="cl2" colspan="2" *ngIf="data.active===false">
+                                        <nz-tag nzColor="error">KHÓA</nz-tag>
+                                    </td>
+                                    <td colspan="1">
+
+                                        <button (click)="deleteSelectedGroup(data.id)" nz-button nz-danger
+                                            nzType="primary" style="margin-right: 10px;" nzDanger><i nz-icon
+                                                nzType="delete" nzTheme="outline"></i></button>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </nz-table>
+                    </div>
+
+
+                </nz-tab>
+
+                <!-- Tab 3 -->
+                <nz-tab nzTitle="Phân quyền" (nzClick)="showTab(3)">
+                    <div class="tabRole">
+                        <div class="addRoleForm">
+                            <nz-form-label [nzSm]="8" [nzXs]="24">Chọn quyền hệ thống
+                            </nz-form-label>
+                            <div class="tableRole">
+                                <ng-container *ngFor="let item of listUserRoleData;index as i">
+                                    <div class="itemRole">
+                                        <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="role_id">
+                                            {{item.name}}
+                                        </nz-form-label>
+                                        <nz-switch [(ngModel)]="item.selected" (click)="onChangeSwitchRole(item.id)">
+                                        </nz-switch>
+                                    </div>
+                                </ng-container>
+                            </div>
+
+
+
+                        </div>
+
+
+                        <nz-table #filterTableRole [nzData]="listSelectedRoleData" nzBordered nzShowPagination='false'
+                            nzTableLayout="fixed">
+                            <thead>
+                                <tr>
+                                    <ng-container *ngFor="let column of listColumnRole; index as i" [ngSwitch]="i">
+                                        <ng-container *ngSwitchCase="0">
+                                            <th nzAlign="center" class="cl{{i}}" colspan="1">
+                                                {{column.name}}
+                                            </th>
+                                        </ng-container>
+                                        <ng-container *ngSwitchCase="3">
+                                            <th nzAlign="center" class="cl{{i}}" colspan="1">
+                                                {{column.name}}
+                                            </th>
+                                        </ng-container>
+                                        <ng-container *ngSwitchDefault>
+                                            <th nzAlign="center" class="cl{{i}}" colspan="2">
+                                                {{column.name}}
+                                            </th>
+                                        </ng-container>
+
+
+                                    </ng-container>
+
+                                    <th nzAlign="center" colspan="1">Tùy chọn</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let data of filterTableRole.data; let i = index">
+                                    <tr *ngIf="data.selected===true" style="text-align: center;">
+                                        <td class="cl0" colspan="1">{{i + 1}}</td>
+                                        <td class="cl1" colspan="2">{{ data.name }}</td>
+
+                                        <td class="cl2" colspan="2" *ngIf="data.active===true">
+                                            <nz-tag nzColor="success">HOẠT ĐỘNG</nz-tag>
+                                        </td>
+                                        <td class="cl2" colspan="2" *ngIf="data.active===false">
+                                            <nz-tag nzColor="error">KHÓA</nz-tag>
+                                        </td>
+                                        <td colspan="1">
+
+                                            <button (click)="deleteSelectedRole(data.id)" nz-button nz-danger
+                                                nzType="primary" style="margin-right: 10px;" nzDanger><i nz-icon
+                                                    nzType="delete" nzTheme="outline"></i></button>
+
+                                        </td>
+                                    </tr>
+                                </ng-container>
+
+                            </tbody>
+                        </nz-table>
+                    </div>
+                </nz-tab>
+
+            </nz-tabset>
+        </ng-container>
+       
+    </nz-modal>
+
+
+
+    <!-- Filter modal -->
+    <nz-modal [(nzVisible)]="isVisibleDisplay" nzTitle="Quản lý trường hiển thị"
+        (nzOnCancel)="handleCancelDisplayModal()">
+
+        <div *nzModalContent>
+            <div nz-row *ngFor="let item of columnsDisplay; let i = index" style="margin-bottom: 10px;">
+                <div nz-col nzSpan="10">
+                    <label>Cột {{item.name}}: </label>
+                </div>
+                <div nz-col nzSpan="14">
+                    <nz-switch [(ngModel)]="!item.hidden" [nzControl]="true"
+                        (click)="onSwitchDisplay(item.hidden, 'cl' + i, i)"></nz-switch>
+                </div>
+            </div>
+        </div>
+        <div *nzModalFooter>
+            <button nz-button nzType="primary" (click)="handleCancelDisplayModal()">Lưu</button>
+        </div>
+    </nz-modal>
+</div>

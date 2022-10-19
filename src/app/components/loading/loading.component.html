@@ -1,0 +1,12 @@
+<div class="loading">
+    <ng-container *ngIf="showLoading;else hiddenLoading">
+        <div class="loadingWrapper">
+            <nz-spin nzTip="Đang xử lý...">
+
+            </nz-spin>
+        </div>
+    </ng-container>
+    <ng-template #hiddenLoading>
+
+    </ng-template>
+</div>

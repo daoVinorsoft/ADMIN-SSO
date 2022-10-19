@@ -1,0 +1,88 @@
+.color_blue {
+    color: #2654a6;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 10px 0px;
+}
+
+.ant-form-vertical .ant-form-item-label, .ant-col-24.ant-form-item-label, .ant-col-xl-24.ant-form-item-label {
+    padding: 0 0 0px;
+}
+
+.p-3 {
+    padding: 3rem;
+}
+.login-form-button {
+    width: 100%;
+    background: #141ED2;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    height: 48px;
+  }
+
+.form-button {
+    width: 20%;
+    background: #141ED2;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    height: 48px;
+  }
+.app-user {
+    .header-page {}
+    .header-page h2 {
+        font-weight: bold;
+    }
+    .right-content {
+        text-align: right;
+    }
+    .right-content .button-default {
+        background-color: transparent;
+        border: none;
+    }
+    .tabCol {
+        display: none;
+    }
+     ::ng-deep nz-tag {
+        width: 90px;
+    }
+     ::ng-deep .ant-tabs-tabpane {
+        height: 500px !important
+    }
+     ::ng-deep form.formAddGroup {
+        height: 300px !important
+    }
+}
+
+// ::ng-deep .ant-modal[role="document"] {
+//     top: auto !important;
+//     width: 620px !important;
+// }
+// ::ng-deep nz-modal-container {
+//     height: 100vh !important;
+//     overflow: hidden !important;
+//     display: flex;
+//     align-items: center !important;
+// }
+// ::ng-deep nz-form-control {
+//     margin-left: 25px;
+// }
+// ::ng-deep nz-tag {
+//     width: 90px;
+// }
+// ::ng-deep .ant-modal-body {
+//     max-height: 650px !important;
+//     overflow-y: scroll;
+// }
+// ::ng-deep nz-date-picker {
+//     width: 100%;
+// }

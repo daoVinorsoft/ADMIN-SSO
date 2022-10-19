@@ -1,0 +1,121 @@
+.cdk-overlay-container {
+    .ant-modal[role="document"] {
+        top: auto !important;
+    }
+
+    nz-date-picker {
+        width: 100% !important;
+    }
+
+    nz-modal-container {
+        height: 100vh !important;
+        overflow: hidden !important;
+        overflow-y: scroll !important;
+        display: flex;
+        align-items: center !important;
+    }
+
+    nz-form-control {
+        // margin-left: 25px;
+    }
+
+    .search-box {
+        padding: 8px;
+    }
+
+    .search-box input {
+        width: 188px;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .search-box button {
+        width: 90px;
+    }
+
+    .search-button {
+        margin-right: 8px;
+    }
+
+    .tabInfo {
+        padding-top: 20px;
+        height: 450px !important;
+    }
+
+    .tabInfoGroup {
+        padding-top: 80px;
+        height: 340px !important;
+    }
+
+    .tabGroup {
+        padding-top: 20px;
+        height: 450px !important;
+
+        form.formAddGroup {
+            height: 100px !important;
+            display: flex;
+            align-items: center;
+
+            nz-form-item {
+                width: 100%;
+
+                nz-form-control {
+                    margin-left: 35px;
+                }
+            }
+        }
+    }
+
+    .tabRoleGroup {
+        padding-top: 30px;
+        height: 340px !important;
+
+        .addRoleForm {
+            margin-bottom: 20px;
+        }
+    }
+
+    .tabRole {
+        padding-top: 50px;
+        height: 450px !important;
+
+        .addRoleForm {
+            margin-bottom: 20px;
+        }
+    }
+
+    nz-tag {
+        width: 90px;
+    }
+}
+
+.ant-modal-content {
+    border-radius: 20px;
+}
+
+.text-danger {
+    color: red;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.gap-2 {
+    gap: 2rem;
+}
+.gap-1 {
+    gap: 1rem;
+}
+
+.bg-dark-btn{
+    background: #F4F4F4;
+}
+
+.center-mode {
+    justify-content: center;
+    text-align: center;
+  }
+.p-10 {
+    padding: 10px;
+}

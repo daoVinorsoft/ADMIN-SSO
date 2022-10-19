@@ -1,0 +1,158 @@
+<div class="header-page">
+    <h2>Quản lý khách hàng</h2>
+    <button nz-button nzType="primary" (click)="showModalAdd()"><i nz-icon nzType="plus" nzTheme="outline"></i> Thêm mới </button>
+</div>
+
+<nz-table #filterTable [nzData]="listOfData" nzTableLayout="fixed">
+    <thead>
+        <tr>
+            <th *ngFor="let column of listOfColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn" [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple" [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn"
+                [nzAlign]="column.align">
+                {{ column.name }}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of filterTable.data; index as i" style="text-align: center;">
+            <td>{{i + 1}}</td>
+            <td>{{ data.first_name }}</td>
+            <td>{{ data.last_name }}</td>
+            <td>{{ data.username }}</td>
+            <td>{{ data.email }}</td>
+            <td *ngIf="data.role === null || data.role === ''"></td>
+            <td *ngIf="data.role === 'ADMIN'">
+                <nz-tag nzColor="success">{{ data.role }}</nz-tag>
+            </td>
+            <td *ngIf="data.role === 'USER'">
+                <nz-tag nzColor="processing">{{ data.role }}</nz-tag>
+            </td>
+            <td style="display: flex; justify-content: space-evenly;">
+                <button nz-button nzType="primary" (click)="showModal(data.id)"><i nz-icon nzType="edit" nzTheme="outline"></i></button>
+                <button nz-button nzType="primary" nzDanger (click)="deleteAccount(data.id)"><i nz-icon nzType="delete" nzTheme="outline"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Cập nhật thông tin người dùng" (nzOnCancel)="handleCancel()" [nzOkLoading]="isOkLoading">
+    <form nz-form [formGroup]="form">
+        <div *nzModalContent>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="first_name" nzRequired>Họ</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Họ là bắt buộc">
+                    <input nz-input id="first_name" formControlName="first_name" placeholder="Nhập Họ" style="width:100%" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="last_name" nzRequired>Tên</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Tên là bắt buộc">
+                    <input nz-input id="last_name" formControlName="last_name" placeholder="Nhập Tên" style="width:100%" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Email</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Email không đúng định dạng!">
+                    <input nz-input formControlName="email" id="email" style="width:100%" placeholder="Nhập email" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="username">Tên đăng nhập</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Tên đăng nhập là bắt buộc ">
+                    <input nz-input formControlName="username" id="username" style="width:100%" placeholder="Nhập tên đăng nhập" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Password</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Mật khẩu là bắt buộc">
+                    <input style="width:100%" placeholder="Nhập mật khẩu" nz-input type="password" id="password" formControlName="password" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="role" nzRequired>Role</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Vai trò là bắt buộc">
+                    <nz-input-group>
+                        <nz-select formControlName="role" class="phone-select">
+                            <nz-option nzLabel="ADMIN" nzValue="ADMIN"></nz-option>
+                            <nz-option nzLabel="USER" nzValue="USER"></nz-option>
+                        </nz-select>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+
+        </div>
+        <div *nzModalFooter>
+            <button nz-button nzType="default" (click)="handleCancel()">Hủy</button>
+            <button nz-button nzType="primary" [nzLoading]="isOkLoading" (click)="handleOk()">Lưu</button>
+        </div>
+    </form>
+
+</nz-modal>
+
+
+<!-- Add modal -->
+
+<nz-modal [(nzVisible)]="isVisibleAdded" nzTitle="Thêm mới người dùng" (nzOnCancel)="handleCancel()" [nzOkLoading]="isOkLoadingAdded">
+    <form nz-form [formGroup]="form">
+        <div *nzModalContent>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="first_name" nzRequired>Họ</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Họ là bắt buộc">
+                    <input nz-input id="first_name" formControlName="first_name" placeholder="Nhập Họ" style="width:100%" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="last_name" nzRequired>Tên</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Tên là bắt buộc">
+                    <input nz-input id="last_name" formControlName="last_name" placeholder="Nhập Tên" style="width:100%" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Email</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Email không đúng định dạng!">
+                    <input nz-input formControlName="email" id="email" style="width:100%" placeholder="Nhập email" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="username">Tên đăng nhập</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Tên đăng nhập là bắt buộc ">
+                    <input nz-input formControlName="username" id="username" style="width:100%" placeholder="Nhập tên đăng nhập" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Password</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Mật khẩu là bắt buộc (có ít nhất 6 ký tự)">
+                    <input style="width:100%" placeholder="Nhập mật khẩu" nz-input type="password" id="password" formControlName="password" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="role" nzRequired>Role</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Vai trò là bắt buộc">
+                    <nz-input-group>
+                        <nz-select formControlName="role" class="phone-select">
+                            <nz-option nzLabel="ADMIN" nzValue="ADMIN"></nz-option>
+                            <nz-option nzLabel="USER" nzValue="USER"></nz-option>
+                        </nz-select>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+
+        </div>
+        <div *nzModalFooter>
+            <button nz-button nzType="default" (click)="handleCancel()">Hủy</button>
+            <button nz-button nzType="primary" [nzLoading]="isOkLoadingAdded" (click)="submitForm()">Lưu</button>
+        </div>
+    </form>
+
+</nz-modal>

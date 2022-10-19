@@ -1,0 +1,12 @@
+.color_blue {
+    color: #2654a6;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 10px 0px;
+}
+
+.ant-form-vertical .ant-form-item-label, .ant-col-24.ant-form-item-label, .ant-col-xl-24.ant-form-item-label {
+    padding: 0 0 0px;
+}

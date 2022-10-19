@@ -1,0 +1,42 @@
+<div class="forgotPass">
+    <div class="header">Phần mềm quản lý app cho CVHT tại khâu hoàn thiện thủ tục TSBĐ
+    </div>
+    <div class="main">
+
+        <form nz-form [formGroup]="validateForm" class="login-form">
+            <nz-form-item>
+
+                <nz-form-control nzErrorTip="Chưa điền email của bạn">
+                    <nz-input-group nzPrefixIcon="mail" class="input">
+                        <input type="text" nz-input formControlName="email" placeholder="Email" />
+                    </nz-input-group>
+                </nz-form-control>
+
+            </nz-form-item>
+
+            <button class="submitButton" nz-button nzType="default" (click)="submitForm()">Gửi mail xác thực</button>
+            <div nz-row class="linkGroup">
+                <div class="forgotPassButton">
+                    <a href="/auth/login">Đăng nhập</a>
+                </div>
+                <div class="Register">
+                    <a href="/auth/register">Đăng kí</a>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+    <div class="logo">
+        <div class="logoContainer">
+            <img src='../../../assets/icons/Logo_MB_new.png'>
+        </div>
+
+    </div>
+</div>
+<ng-container *ngIf="showLoading;else hiddenLoading">
+    <app-loading></app-loading>
+</ng-container>
+<ng-template #hiddenLoading>
+
+</ng-template>

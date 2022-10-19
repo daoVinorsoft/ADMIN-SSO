@@ -1,0 +1,107 @@
+<!--
+@author [daoNguyen]
+@email [daonds@vinorsoft.com ]
+@create date 2022-10-11 09:30:53
+@modify date 2022-10-17 15:16:59
+@desc [description]
+-->
+
+<nz-layout class="app-layout">
+    <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+        [nzTrigger]="null">
+        <div class="sidebar-logo">
+            <a href="/admin/account">
+                <img src="../assets/icons/icon-camera.jpg" alt="logo">
+                <!-- <h1>Quản lý tín dụng</h1> -->
+            </a>
+        </div>
+        <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+            <li nz-menu-item nz-tooltip nzTooltipPlacement="right">
+                <span nz-icon nzType="camera"></span>
+                <span><a routerLink="/admin/view-camera">Xem Camera</a></span>
+            </li>
+            <li nz-menu-item nz-tooltip nzTooltipPlacement="right">
+                <span nz-icon nzType="environment" nzTheme="outline"></span>
+                <span>Bản đồ Camera</span>
+            </li>
+            <li nz-menu-item nz-tooltip nzTooltipPlacement="right">
+                <span nz-icon nzType="play-square" nzTheme="fill"></span>
+                <span>Xem lại</span>
+            </li>
+            <li nz-menu-item nz-tooltip nzTooltipPlacement="right">
+                <span nz-icon nzType="calculator" nzTheme="outline"></span>
+                <span>Tính toán thông minh</span>
+            </li>
+            <li nz-menu-item nz-tooltip nzTooltipPlacement="right">
+                <span nz-icon nzType="bar-chart" nzTheme="outline"></span>
+                <span>Thống kê</span>
+            </li>
+
+            <li nz-submenu nzTitle="Quản trị" nzIcon="profile" nzTheme="fill">
+                <ul>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/admin/user">Người dùng</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/admin/group">Nhóm người dùng</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/admin/role">Quyền hệ thống</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li nz-submenu nzOpen nzTitle="Thông tin hệ thống" nzIcon="dashboard">
+                <ul>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/welcome">Hoạt động hệ thống</a>
+                    </li>
+                </ul>
+            </li>
+            <li nz-submenu nzTitle="Hệ thống" nzIcon="form">
+                <ul>
+                    <li nz-menu-item nzMatchRouter>
+                        <a>Cài đặt</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a (click)="logout()">Đăng xuất</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li nz-submenu nzTitle="Tạo tác vụ" nzIcon="reconciliation">
+                <ul>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/admin/system-tasks">Công chứng</a>
+                    </li>
+                </ul>
+            </li> -->
+        </ul>
+    </nz-sider>
+    <nz-layout>
+        <nz-header>
+            <div class="app-header">
+                <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+                    <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+                </span>
+                <button nz-button nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="Position[0]">
+                    Tên người dùng d
+                    <nz-avatar nzIcon="user" style="background-color:#dedee2;"></nz-avatar>
+                    <nz-dropdown-menu #menu="nzDropdownMenu">
+                        <ul nz-menu>
+                            <li nz-menu-item>Tài khoản</li>
+                            <li nz-menu-item>Cài đặt</li>
+                            <li nz-menu-item (click)="logout()">Đăng xuất</li>
+                        </ul>
+                    </nz-dropdown-menu>
+                </button>
+            </div>
+        </nz-header>
+        <nz-content>
+            <div class="inner-content">
+                <router-outlet></router-outlet>
+            </div>
+        </nz-content>
+    </nz-layout>
+</nz-layout>
+
+<app-spinner *ngIf="loading$ | async"></app-spinner>

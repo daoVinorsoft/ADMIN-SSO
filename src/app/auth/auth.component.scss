@@ -1,0 +1,14 @@
+.auth {
+    height: 100vh;
+    background-image: url("../../assets/images/mb2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .authOutlet {
+        position: absolute;
+        right: 10vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+}
