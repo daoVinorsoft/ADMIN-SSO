@@ -104,18 +104,65 @@
 .gap-2 {
     gap: 2rem;
 }
+
 .gap-1 {
     gap: 1rem;
 }
 
-.bg-dark-btn{
+.bg-dark-btn {
     background: #F4F4F4;
 }
 
 .center-mode {
     justify-content: center;
     text-align: center;
-  }
+}
+
 .p-10 {
     padding: 10px;
+}
+
+
+.btn {}
+
+.btn-danger {
+    padding: 8px 16px;
+    gap: 10px;
+    width: 61px;
+    height: 40px;
+    background: #EB2D4B;
+    border-radius: 4px;
+    color: #F4F4F4;
+}
+
+.btn-primary {
+    width: 93px;
+    height: 40px;
+    background: #141ED2;
+    border-radius: 4px;
+    color: #F4F4F4;
+
+}
+
+.w-100 {
+    width: 100%;
+}
+
+
+
+// STYLE CONTENT
+.header-page {
+    width: 100%;
+    height: 56px;
+    background: #FFFFFF;
+    padding: 10px;
+    // margin: -10px -13px;
+}
+
+.box-content {
+    background: #FFFFFF;
+    padding: 10px;
+    // width: 100%;
+    margin: 10px;
+    border-radius: 5px;
 }

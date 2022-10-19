@@ -1,0 +1,76 @@
+<div class="app-content">
+    <div class="header-page border-bottom">
+        <div>
+            <h2>Quản lý banner</h2>
+        </div>
+    </div>
+
+    <div class="box-content">
+        <div class="head-content pb-10">
+            <div style="display: flex;">
+                <div nzSpan="24" class="pr-10">
+                    <nz-input-group [nzSuffix]="suffixIconSearch" nzSize="large">
+                        <input nzSize="large" type="text" nz-input placeholder="Tìm kiếm" />
+                        <ng-template #suffixIconSearch>
+                            <span nz-icon nzType="search"></span>
+                        </ng-template>
+                    </nz-input-group>
+                </div>
+
+                <div nzSpan="24">
+                    <nz-select ngModel="" nzSize="large">
+                        <nz-option nzValue="" nzLabel="Trạng thái"></nz-option>
+                        <nz-option nzValue="1" nzLabel="1"></nz-option>
+                        <nz-option nzValue="2" nzLabel="2"></nz-option>
+                    </nz-select>
+                </div>
+            </div>
+
+            <div>
+                <a href="/admin/tao-banner">
+                     <button class="btn-add-new" nz-button>Tạo mới </button>
+                </a>
+            </div>
+        </div>
+
+        <nz-table #basicTable [nzData]="listOfData">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Hình ảnh</th>
+                    <th>Tên banner</th>
+                    <th>Ngày tạo</th>
+                    <th>Người tạo</th>
+                    <th>Trạng thái</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of basicTable.data; let i = index">
+                    <td>{{ i }}</td>
+                    <td>
+                        <img [src]="data.banner" [alt]="data.bannerName" style="width: 77px;
+                    height: 36px;
+                    object-fit: cover;">
+                    </td>
+                    <td>{{ data.bannerName }}</td>
+                    <td>{{ data.bannerDate }}</td>
+                    <td>{{ data.bannerCreateBy }}</td>
+                    <td>
+                        <nz-tag *ngIf="data.bannerStatus == 'pendding' " [nzColor]="'purple'">Chờ duyệt</nz-tag>
+                        <nz-tag *ngIf="data.bannerStatus == 'reject' " [nzColor]="'red'">Từ chối</nz-tag>
+                        <nz-tag *ngIf="data.bannerStatus == 'approved' " [nzColor]="'green'">Đã duyệt</nz-tag>
+                    </td>
+
+                    <td>
+                        <span nz-typography nzType="danger">Từ chối</span> |
+                        <span nz-typography style="color: purple;">Duyệt</span> |
+                        <span nz-icon nzType="drag" nzTheme="outline" style="font-size: 20px;"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+
+    </div>
+
+</div>

@@ -12,14 +12,13 @@ import { PagesComponent } from './pages.component'; // <---
 import { PageRoutingModule } from './pagesRouting.module';
 import { RoleModule } from './role/role.module';
 import { SytemTasksModule } from './system-tasks/sytem-tasks.module';
+import { BannersModule } from './banner/banner.module';
 import { UserModule } from './user/user.module'; // <---
 import { UserGroupModule } from './userGroup/userGroup.module'; // <---
 
 
 
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
-import { ViewCameraComponent } from './view-camera/view-camera.component';
-import { ViewCameraModule } from './view-camera/view-camera.module';
 import { Observable } from 'rxjs';
 import { StoreModule } from '@ngrx/store';
 import { UserReducer } from '../store/reducers/user.reducer';
@@ -40,8 +39,8 @@ import { UserReducer } from '../store/reducers/user.reducer';
     GroupModule,
     UserGroupModule,
     SytemTasksModule,
-    ViewCameraModule,
     NzTabsModule,
+    BannersModule
   ],
   
   declarations: [

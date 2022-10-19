@@ -221,18 +221,20 @@ export class LoginComponent implements OnInit {
     if (this.formDataLogin.valid) {
       console.log('first this.formDataLogin.value', this.formDataLogin.value)
       this.showLoading = true;
-      this.service.login(this.formDataLogin.value).subscribe(
-        (res) => {
-          this.showLoading = false;
-          this.message.create('success', 'Đăng nhập thành công');
-          localStorage.setItem('userToken', res.access);
-          this.router.navigate(['/admin/user']);
-        },
-        (error) => {
-          this.showLoading = false;
-          this.message.create('error', 'Thông tin đăng nhập không chính xác');
-        }
-      );
+      this.router.navigate(['admin/banners']);
+
+      // this.service.login(this.formDataLogin.value).subscribe(
+      //   (res) => {
+      //     this.showLoading = false;
+      //     this.message.create('success', 'Đăng nhập thành công');
+      //     localStorage.setItem('userToken', res.access);
+      //     this.router.navigate(['/admin/user']);
+      //   },
+      //   (error) => {
+      //     this.showLoading = false;
+      //     this.message.create('error', 'Thông tin đăng nhập không chính xác');
+      //   }
+      // );
     } else {
       // this.router.navigate(['/admin/user']);
       this.message.create('error', 'Vui lòng kiểm tra lại thông tin');

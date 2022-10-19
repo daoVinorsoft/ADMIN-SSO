@@ -7,8 +7,9 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () =>
       import('./pages/pages.module').then((m) => m.PagesModule),
-    data: { preload: true },
+      data: { preload: true },
   },
+
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),

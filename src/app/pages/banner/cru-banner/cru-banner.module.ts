@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTableModule } from 'ng-zorro-antd/table';
@@ -18,19 +17,16 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
-import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
-import { ViewCameraComponent } from './view-camera.component';
-import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
-import { NzCollapseModule } from 'ng-zorro-antd/collapse';
-import { CameraService } from 'src/app/@core/mock/camera.service';
-import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { BannerCRUComponent } from './cru-banner.component';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { UserService } from 'src/app/@core/mock/user.service';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 @NgModule({
   imports: [
-    NzEmptyModule,
-    NzTimePickerModule,
-    NzCollapseModule,
+    NzCheckboxModule,
     CommonModule,
     NzTableModule,
     NzTagModule,
@@ -48,12 +44,12 @@ import { NzEmptyModule } from 'ng-zorro-antd/empty';
     NzInputModule,
     NzSwitchModule,
     NzPopconfirmModule,
-    NzTabsModule,
     NzPaginationModule,
+    NzTabsModule,
+    NzUploadModule,
   ],
-  declarations: [ViewCameraComponent],
-  exports: [ViewCameraComponent],
-  providers: [CameraService]
+  declarations: [BannerCRUComponent],
+  exports: [BannerCRUComponent],
+  providers: [UserService]
 })
-export class ViewCameraModule {}
-
+export class BannerCRUModule {}

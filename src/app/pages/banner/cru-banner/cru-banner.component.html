@@ -1,0 +1,104 @@
+<div class="app-user">
+    <div nz-row class="header-page">
+        <div nz-col nzSpan="12" style="display: flex; gap: 10px; align-items: center;">
+            <div>
+                <a href="/admin/banners">
+                    <span style="font-size: 18px ;" nz-icon nzType="arrow-left" nzTheme="outline"></span>
+                </a>
+            </div>
+
+            <div>
+                <h2>Tạo banner</h2>
+            </div>
+        </div>
+
+        <div nz-col nzSpan="12" class="right-content">
+            <button class="btn btn-danger" nz-button>Huỷ </button>
+            <button class="btn btn-primary" nz-button>Tạo mới </button>
+        </div>
+    </div>
+    <div>
+        <div nz-row>
+            <div nz-col nzSpan="18">
+                <div class="box-content">
+                    <div class="d-flex" style="justify-content: space-between;">
+                        <div>
+                            <h2>Tiêu đề banner</h2>
+                        </div>
+                        <div>
+                            <p>0/300</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <nz-form-item nz-col [nzSpan]="24">
+                            <nz-form-control>
+                                <input placeholder="Kiến thức cơ bản về Quỹ" class="title-banner-input w-100"
+                                    formControlName="USERNAME" nz-input name="code" type="email" id="email">
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </div>
+
+            </div>
+
+            <div nz-col nzSpan="5" class="box-content">
+                <div class="d-flex" style="justify-content: space-between;">
+                    <div>
+                        <h2>Hyperlink</h2>
+                    </div>
+                    <div>
+                        <a href="#">
+                            <span nz-icon nzType="copy" nzTheme="outline"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <nz-form-item nz-col [nzSpan]="24">
+                        <nz-form-control>
+                            <input placeholder="https://mb.com.vn/kien-t..." class="title-banner-input w-100"
+                                formControlName="USERNAME" nz-input name="code" type="email" id="email">
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+        </div>
+
+        <div nz-row>
+            <div nz-col nzSpan="18">
+                <div class="box-content">
+                    <div class="box-upload-banner">
+                    <nz-upload nzType="drag" [nzMultiple]="true"
+                        nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" (nzChange)="handleChange($event)">
+                        <p class="ant-upload-drag-icon">
+                            <span nz-icon nzType="inbox"></span>
+                        </p>
+                        <b class="ant-upload-text">Upload Banner</b>
+                        <p class="ant-upload-hint">Kích thước tiêu chuẩn 794 x 428</p>
+                    </nz-upload>
+                </div>
+                    
+                </div>
+            </div>
+
+            <div nz-col nzSpan="5" class="box-content" style="height: 140px ;">
+                <div class="">
+                    <div>
+                        <h2>Thông báo</h2>
+                    </div>
+                </div>
+
+                <div>
+                    <nz-checkbox-wrapper style="width: 100%;">
+                        <div nz-row  >
+                          <div nz-col nzSpan="24"><label class="checkbox-notif" nz-checkbox nzValue="A" [ngModel]="true">Thông báo toàn bộ User</label></div>
+                          <div  nz-col nzSpan="24"><label class="checkbox-notif" nz-checkbox nzValue="B">Thông báo User chỉ định</label></div>
+                        </div>
+                      </nz-checkbox-wrapper>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

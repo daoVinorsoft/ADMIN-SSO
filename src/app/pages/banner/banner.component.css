@@ -1,0 +1,40 @@
+.color_blue {
+    color: #2654a6;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #f0f0f0;
+    /* padding: 10px 0px; */
+}
+
+.ant-form-vertical .ant-form-item-label,
+.ant-col-24.ant-form-item-label,
+.ant-col-xl-24.ant-form-item-label {
+    padding: 0 0 0px;
+}
+
+.content {
+    padding-top: 10px;
+}
+
+.pr-10 {
+    padding-right: 10px;
+}
+.pb-10 {
+    padding-bottom: 10px;
+}
+
+.head-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.btn-add-new {
+    color: #f0f0f0;
+    background: #141ED2;
+    border-radius: 4px;
+    padding: 12px 20px;
+    height: 50px;
+    width: 101px
+}

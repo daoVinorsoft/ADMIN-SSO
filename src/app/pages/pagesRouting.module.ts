@@ -7,7 +7,8 @@ import { RoleComponent } from './role/role.component';
 import { GroupComponent } from './group/group.component';
 import { SystemTasksComponent } from './system-tasks/system-tasks.component';
 import { UserGroupComponent } from './userGroup/userGroup.component';
-import { ViewCameraComponent } from './view-camera/view-camera.component';
+import { BannersComponent } from './banner/banner.component';
+import { BannerCRUComponent } from './banner/cru-banner/cru-banner.component';
 
 export const routes: Routes = [
   {
@@ -31,8 +32,12 @@ export const routes: Routes = [
         component: SystemTasksComponent,
       },
       {
-        path: 'view-camera',
-        component: ViewCameraComponent,
+        path: 'banners',
+        component: BannersComponent,
+      },
+      {
+        path: 'tao-banner',
+        component: BannerCRUComponent,
       },
     ],
   },

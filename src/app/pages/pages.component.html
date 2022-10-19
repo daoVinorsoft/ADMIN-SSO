@@ -2,7 +2,7 @@
 @author [daoNguyen]
 @email [daonds@vinorsoft.com ]
 @create date 2022-10-11 09:30:53
-@modify date 2022-10-17 15:16:59
+@modify date 2022-10-19 17:23:39
 @desc [description]
 -->
 
@@ -16,40 +16,59 @@
             </a>
         </div>
         <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-            <li nz-menu-item nz-tooltip nzTooltipPlacement="right">
-                <span nz-icon nzType="camera"></span>
-                <span><a routerLink="/admin/view-camera">Xem Camera</a></span>
+            <li nz-menu-item nz-tooltip nzTooltipPlacement="right" >
+                <span nz-icon nzType="dashboard" nzTheme="outline"></span>
+                <span><a routerLink="#">Thống kê</a></span>
             </li>
-            <li nz-menu-item nz-tooltip nzTooltipPlacement="right">
-                <span nz-icon nzType="environment" nzTheme="outline"></span>
-                <span>Bản đồ Camera</span>
-            </li>
-            <li nz-menu-item nz-tooltip nzTooltipPlacement="right">
-                <span nz-icon nzType="play-square" nzTheme="fill"></span>
-                <span>Xem lại</span>
-            </li>
-            <li nz-menu-item nz-tooltip nzTooltipPlacement="right">
-                <span nz-icon nzType="calculator" nzTheme="outline"></span>
-                <span>Tính toán thông minh</span>
-            </li>
-            <li nz-menu-item nz-tooltip nzTooltipPlacement="right">
-                <span nz-icon nzType="bar-chart" nzTheme="outline"></span>
-                <span>Thống kê</span>
+            <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzSelected>
+                <span nz-icon nzType="file-image" nzTheme="outline"></span>
+                <span><a routerLink="/admin/banners">Banner</a></span>
             </li>
 
-            <li nz-submenu nzTitle="Quản trị" nzIcon="profile" nzTheme="fill">
+            <li nz-submenu nzTitle="Quản trị chuyên mục" nzIcon="folder" nzTheme="fill">
                 <ul>
-                    <li nz-menu-item nzMatchRouter>
-                        <a routerLink="/admin/user">Người dùng</a>
+                    <li nz-menu-item >
+                        <a routerLink="#">Danh sách chuyên mục</a>
                     </li>
-                    <li nz-menu-item nzMatchRouter>
-                        <a routerLink="/admin/group">Nhóm người dùng</a>
-                    </li>
-                    <li nz-menu-item nzMatchRouter>
-                        <a routerLink="/admin/role">Quyền hệ thống</a>
+                    <li nz-menu-item >
+                        <a routerLink="#">Thêm mới chuyên mục</a>
                     </li>
                 </ul>
             </li>
+
+            <li nz-submenu nzTitle="Quản trị bài viết" nzIcon="book" nzTheme="fill">
+                <ul>
+                    <li nz-menu-item >
+                        <a routerLink="#">Danh sách bài viết</a>
+                    </li>
+                    <li nz-menu-item >
+                        <a routerLink="#">Thêm mới bài viết</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li nz-submenu nzTitle="Quản lý tài khoản" nzIcon="user" nzTheme="fill">
+                <ul>
+                    <li nz-menu-item >
+                        <a routerLink="#">Người dùng</a>
+                    </li>
+                    <li nz-menu-item >
+                        <a routerLink="#">Nhóm người dùng</a>
+                    </li>
+                    <li nz-menu-item >
+                        <a routerLink="#">Quyền hệ thống</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li nz-menu-item nz-tooltip nzTooltipPlacement="right">
+                <span nz-icon nzType="setting" nzTheme="outline"></span>
+                <span><a routerLink="#">Cài đặt</a></span>
+            </li>
+
+           
+
+            
             <!-- <li nz-submenu nzOpen nzTitle="Thông tin hệ thống" nzIcon="dashboard">
                 <ul>
                     <li nz-menu-item nzMatchRouter>
@@ -84,7 +103,7 @@
                     <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
                 </span>
                 <button nz-button nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="Position[0]">
-                    Tên người dùng d
+                    Tên người dùng
                     <nz-avatar nzIcon="user" style="background-color:#dedee2;"></nz-avatar>
                     <nz-dropdown-menu #menu="nzDropdownMenu">
                         <ul nz-menu>

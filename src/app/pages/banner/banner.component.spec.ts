@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ViewCameraComponent } from './view-camera.component';
 
+import { SystemTasksComponent } from './banner.component';
 
 describe('SystemTasksComponent', () => {
-  let component: ViewCameraComponent;
-  let fixture: ComponentFixture<ViewCameraComponent>;
+  let component: SystemTasksComponent;
+  let fixture: ComponentFixture<SystemTasksComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewCameraComponent ]
+      declarations: [ SystemTasksComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewCameraComponent);
+    fixture = TestBed.createComponent(SystemTasksComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
